@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MutatingDots } from "react-loader-spinner";
-import Logo from "./Logo";
-import { Props } from "../Types/Movie-Type";
+import Logo from "../Logo";
+import { Props } from "../../Common/Types/Movie-Type";
 import MovieProps from "./Movies-Props";
-import * as MovieStyle from "../Styles/movies-style";
+import * as MovieStyle from "../../Common/Styles/movies-style";
 
 export default function Movies() {
-
   const { Session, Container } = MovieStyle.default;
   const [Movies, setMovies] = useState<Props[]>([]);
 
@@ -32,9 +31,14 @@ export default function Movies() {
       </Session>
 
       <Container>
-        {Movies.length != 0 ? (
-          Movies.map((item) => (
-            <MovieProps id={item.id} posterURL={item.posterURL} />
+        {Movies.length !== 0 ? (
+          Movies.map((item, index) => (
+            <MovieProps
+              key={index}
+              id={item.id}
+              posterURL={item.posterURL}
+              title={item.title}
+            />
           ))
         ) : (
           <MutatingDots
