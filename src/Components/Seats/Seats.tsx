@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Logo from "../Logo";
 import MovieStyles from "../../Common/Styles/movies-style";
 import SeatsStyle from "../../Common/Styles/seats-style";
+import { MutatingDots } from "react-loader-spinner";
 import axios from "axios";
 import SeatsProps from "./Seats-props";
 import { useParams } from "react-router-dom";
@@ -45,13 +46,27 @@ export default function Seats() {
       </Session>
       <Container>
         <ContainerSeats>
-          {SeatsArr.splice(0, 50).map((item, index) => (
-            <SeatsProps
-              key={index}
-              name={item.name}
-              isAvailable={item.isAvailable}
+          {SeatsArr.length !== 0 ? (
+            SeatsArr.splice(0, 50).map((item, index) => (
+              <SeatsProps
+                key={index}
+                name={item.name}
+                isAvailable={item.isAvailable}
+              />
+            ))
+          ) : (
+            <MutatingDots
+              height="100"
+              width="100"
+              color="#fff"
+              secondaryColor="#fff"
+              radius="12.5"
+              ariaLabel="mutating-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
             />
-          ))}
+          )}
         </ContainerSeats>
       </Container>
 
@@ -72,10 +87,10 @@ export default function Seats() {
 
       <Container>
         <h1>Nome Completo do reservante</h1>
-      <input type="text" required placeholder="Digite seu nome..."></input>
-      <h1>CPF do reservante</h1>
-      <input type="text" required placeholder="Digite seu CPF..." />
-      <button>Reservar ingresso</button>
+        <input type="text" required placeholder="Digite seu nome..."></input>
+        <h1>CPF do reservante</h1>
+        <input type="text" required placeholder="Digite seu CPF..." />
+        <button>Reservar ingresso</button>
       </Container>
     </>
   );

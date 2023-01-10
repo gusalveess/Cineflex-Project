@@ -6,6 +6,7 @@ import { Showtimes } from "../../Common/Types/Session-Type";
 export default function SessionProps(props: any) {
   const { Container, Box } = SessionStyle;
   let showtimes: Showtimes = props.showtimes;
+  showtimes.splice(2,2)
 
   return (
     <>
