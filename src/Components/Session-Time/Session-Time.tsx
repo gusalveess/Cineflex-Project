@@ -5,22 +5,21 @@ import SessionProps from "./Session-Props";
 import axios from "axios";
 import UserContext from "../../Context";
 import Logo from "../Logo";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function SessionTime() {
   const [SessionTime, SetSession] = useState<Session[]>([]);
   const { Session } = MovieStyles;
-  const { Id } = useContext(UserContext);
+  const {id} = useParams()
   const Navigate = useNavigate()
 
   useEffect(() => {
     const promise = axios.get(
-      `https://mock-api.driven.com.br/api/v7/cineflex/movies/${Id}/showtimes`
+      `https://mock-api.driven.com.br/api/v7/cineflex/movies/${id}/showtimes`
     );
 
     promise.then((response) => {
       SetSession(response.data.days)
-      console.log(SessionTime.map(item => item.showtimes))
       
     });
     promise.catch((err) => {

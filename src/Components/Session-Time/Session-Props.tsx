@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import SessionStyle from "../../Common/Styles/session-style";
 import { Showtimes } from "../../Common/Types/Session-Type";
@@ -13,8 +13,8 @@ export default function SessionProps(props: any) {
         <p>
           {props.weekday} - {props.date}
         </p>
-        {showtimes.map((item) => (
-          <Link to={`/sessoes/${item.id}`}>
+        {showtimes.map((item, index) => (
+          <Link to={`/assentos/${item.id}`} key={index}>
           <div>
             <Box>{item.name}</Box>
           </div>

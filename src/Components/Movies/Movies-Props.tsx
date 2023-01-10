@@ -19,8 +19,10 @@ export default function MovieProps(props: any) {
               alt={props.title}
             />
           </div>
-          <p>{props.title}</p>
-          <button>Ver horários</button>
+        </Link>
+        <p>{props.title}</p>
+        <Link to={`/filme/${props.id}`}>
+          <span>Ver horários</span>
         </Link>
       </Box>
     </>

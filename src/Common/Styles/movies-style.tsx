@@ -44,7 +44,10 @@ const Box = styled.div`
     align-items: center;
   }
 
-  button {
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #fff;
     outline: none;
     width: 140px;
